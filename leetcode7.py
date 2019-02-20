@@ -56,14 +56,3 @@ class Solution(object):
             return False
 
         return True
-
-
-solution = Solution()
-
-# upperbound = int(math.pow(2, 31) - 1)
-# lowerbound = int(-1 * math.pow(2, 31))
-
-# print(solution.isInt32(upperbound + 1))
-# print(int(math.pow(2, 31)) > testInput)
-
-# solution.reverse(testInput)
