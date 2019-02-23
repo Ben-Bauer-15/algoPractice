@@ -1,0 +1,3 @@
+= '':
+            print('empty string')
+            ret
