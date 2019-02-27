@@ -1,32 +1,37 @@
 def minimumSwaps(arr):
+    places = []
+    visited = []
+    for i in range(len(arr)):
+        places.append((arr[i], i + 1))
+        visited.append(False)
 
-    # swapIndices = []
+    places.sort()
+    answer = 0
 
-    # for i in range(len(arr) - 1):
-    #     for j in range(i + 1, len(arr)):
-    #         if arr[i] > arr[j]:
-    #             swapIndices.append([i, j])
+    for i in range(len(arr)):
+        # print(i, visited[i], places[i])
+        if visited[i] or places[i][1] == i + 1:
+            continue
 
-    # if len(swapIndices) == 0:
-    #     return 0
+        cycleSize = 0
+        j = i
+        while not visited[j]:
+            visited[j] = True
+            j = places[j][1] - 1
+            cycleSize += 1
+            # print('j is ', j, 'visited j is ', visited[j], 'places i j is ', places[j][1], 'cycle size is ', cycleSize)
 
-    # numSwaps = []
-
-    # for swap in swapIndices:
-    #     newList = arr[:]
-    #     temp = newList[swap[0]]
-    #     newList[swap[0]] = newList[swap[1]]
-    #     newList[swap[1]] = temp
-    #     numSwaps.append(1 + minimumSwaps(newList))
+        answer += (cycleSize - 1)
     
-    # return min(numSwaps)
-
-    
-
+    print(answer)
+    return answer
 
 
-arr = [1,72,73,2354,3]
 arr2 = [4,3,1,2]
 arr3 = [2,3,4,1,5]
 arr4 = [1,3,5,2,4,6,7]
-print(minimumSwaps(arr4))
+
+tests = [arr2, arr3, arr4]
+
+minimumSwaps(arr4)
+
