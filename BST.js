@@ -159,12 +159,32 @@ var arr = [0,1,2,5,6,8,9,12]
 
 var root = makeBST(arr)
 
-var list = []
-
-depthLists(root, 0, list)
 
 
+function checkHeight(node){
+    
+    if (!node){
+        return 0;
+    }
+    var left = checkHeight(node.left);
+    if (left == Number.MIN_VALUE){
+        return Number.MIN_VALUE;
+    }
+    
+    var right = checkHeight(node.right)
+    if (right == Number.MIN_VALUE){
+        return Number.MIN_VALUE;
+    }
+    
+    if (Math.abs(left - right) > 1){
+        return Number.MIN_VALUE;
+    }
+
+    return Math.max(left, right) + 1;
+}
 
 
-
+function isBalanced(node){
+    return checkHeight(node) != Number.MIN_VALUE;
+}
 
