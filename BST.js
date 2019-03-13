@@ -159,6 +159,8 @@ var arr = [0,1,2,5,6,8,9,12]
 
 var root = makeBST(arr)
 
+root.left.right.val = 7
+
 
 
 function checkHeight(node){
@@ -187,4 +189,29 @@ function checkHeight(node){
 function isBalanced(node){
     return checkHeight(node) != Number.MIN_VALUE;
 }
+
+
+
+function validateBST(node){
+    var sorted = [];
+    inOrder(node, sorted);
+    for (var i = 1; i < sorted.length; i++){
+        if (sorted[i] < sorted[i - 1]){
+            return false;
+        }
+    }
+    return true;
+}
+
+function inOrder(node, arr){
+    if (!node){
+        return;
+    }
+    inOrder(node.left, arr);
+    arr.push(node.val);
+    inOrder(node.right, arr);
+    return arr;
+}
+
+console.log(validateBST(root))
 
