@@ -116,6 +116,14 @@ class treeNode {
 }
 
 
+function inOrder(node){
+    if (!node){
+        return;
+    }
+    inOrder(node.left);
+    console.log(node.val);
+    inOrder(node.right)
+}
 
 function makeBST(arr){
     if (arr.length == 0){
@@ -128,14 +136,6 @@ function makeBST(arr){
     return node;
 }
 
-function inOrder(node){
-    if (!node){
-        return;
-    }
-    inOrder(node.left);
-    console.log(node.val);
-    inOrder(node.right)
-}
 
 function depthLists(node, depth, list){
     if (!node){
